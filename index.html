@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            时间的制作
+        </title>
+        <style type="text/css">
+            *{margin:0px;padding: 0px;}
+            body{background: #000;}
+             h2{padding-top: 40px;background: #000;color: #fff;text-align: center;font-size: 60px;text-shadow: 0 0 35px #f00;animation: .5s title infinite;-webkit-text-stroke: 1px red;
+    -webkit-text-fill-color: transparent;}
+             @keyframes title{
+             	 from{text-shadow:0 0 0px #000;}
+             	 to{text-shadow: 0 0 50px #f00;}
+             }
+
+             #xbox{width: 600px;height: 70px;/*border:1px solid blue;*/margin:60px auto;}
+             #xbox .Con #a1,#a2,#a3,#a4,#a5,#a6,#a7,#a8,#a9{width: 60px;height: 60px;border:1px solid #fff;float: left;color: #fff;color: #fff;line-height: 60px;text-align: center;font-size: 30px;box-shadow:0 0 10px red;}
+             #xbox .Con #a10{width: 20px;height: 60px;float: left;}
+            /* #xbox .Con #a2{width: 60px;height: 60px;border:1px solid red;float: left;color: #fff;line-height: 60px;text-align: center;font-size: 30px;}
+             #xbox .Con #a3{width: 60px;height: 60px;border:1px solid red;float: left;color: #fff;font-size: 24px;text-align: center;line-height: 60px;}*/
+
+        </style>
+    </head>
+
+
+
+    <body>
+        <h2>3D制作时间表</h2>
+        <div id="xbox">
+            <div class="Con">
+                 <div id="a1"></div>
+                 <div id="a2"></div>
+                 <div id="a3">时</div>
+                 <div id="a10"></div>
+            </div>
+
+            <div class="Con">
+                 <div id="a4"></div>
+                 <div id="a5"></div>
+                 <div id="a6">分</div>
+                 <div id="a10"></div>
+            </div>
+
+
+            <div class="Con">
+                 <div id="a7"></div>
+                 <div id="a8"></div>
+                 <div id="a9">秒</div>
+            </div>
+        </div>
+
+
+
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+              var x1=document.getElementById("a1");
+              var x2=document.getElementById("a2");
+
+              var x4=document.getElementById("a5");
+              var x5=document.getElementById("a4");
+
+
+              var x7=document.getElementById("a8");
+              var x8=document.getElementById("a7");
+              
+              var str="";
+              var arr=[];
+              var i=0;
+              setInterval(timer,1000);
+              timer();
+              function timer(){
+              	  var myTimer=new Date();
+              	  var iYear=myTimer.getFullYear();
+              	  var iMonth=myTimer.getMonth()+1;
+              	  var iDay=myTimer.getDate();
+              	  var iHours=myTimer.getHours();
+              	  var iMin=myTimer.getMinutes();
+              	  var iSec=myTimer.getSeconds();
+              	  str = toTwo( iHours ) + toTwo( iMin ) + toTwo( iSec );
+              	  console.log(str)
+                  for(var i=0;i<6;i++)
+                  {
+                  	  arr[i]=str.charAt(i);
+                  	  
+                  }
+
+                   /*console.log(arr)*/
+                  x2.innerText=arr[1];
+                  x1.innerText=arr[0];
+
+                  x4.innerText=arr[3];
+                  x5.innerText=arr[2];
+
+
+                  x7.innerText=arr[5];
+                  x8.innerText=arr[4];
+                  
+                  
+
+
+
+              }
+
+              function toTwo( n ){ return n<10 ? '0'+n : ''+n; }
+        </script>
+    </body>
+</html>
